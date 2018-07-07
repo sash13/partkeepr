@@ -26,7 +26,7 @@ COPY php.ini /usr/local/etc/php/php.ini
 RUN pear config-set php_ini /usr/local/etc/php/php.ini \
     && pecl config-set php_ini /usr/local/etc/php/php.ini
 
-ENV PK_VERSION 1.0.0
+ENV PK_VERSION 1.4.0
 
 RUN cd /var/www \
     && curl -sL https://downloads.partkeepr.org/partkeepr-${PK_VERSION}.tbz2 | bsdtar -xf- \
