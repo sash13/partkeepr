@@ -12,6 +12,7 @@ services:
 
   partkeepr:
     build: partkeepr
+    mem_limit: 512m
     depends_on:
       - mysql
 
@@ -24,8 +25,6 @@ services:
         - MYSQL_PASSWORD=partkeepr
     volumes:
       - mysqldata:/var/lib/mysql
-    mem_limit: 1000000000
-    memswap_limit: 2000000000
 
   cron:
     build: cron

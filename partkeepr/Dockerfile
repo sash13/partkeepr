@@ -2,6 +2,7 @@ FROM php:5.6-fpm
 
 RUN apt-get update && apt-get install -y \
         bzip2 \
+        bsdtar \
         libcurl4-openssl-dev \
         libpng12-dev \
         libmagickwand-dev \
@@ -28,7 +29,7 @@ RUN pear config-set php_ini /usr/local/etc/php/php.ini \
 ENV PK_VERSION 1.0.0
 
 RUN cd /var/www \
-    && curl -sL https://github.com/partkeepr/PartKeepr/releases/download/${PK_VERSION}/partkeepr-${PK_VERSION}.tbz2 |tar xj \
+    && curl -sL https://downloads.partkeepr.org/partkeepr-${PK_VERSION}.tbz2 | bsdtar -xf- \
     && mv partkeepr-${PK_VERSION} partkeepr \
     && chown -R www-data:www-data /var/www/partkeepr
 
